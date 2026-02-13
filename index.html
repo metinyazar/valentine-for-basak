@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine’s Day, Başak ❤️</title>
+  <style>
+    :root {
+      --bg: #fff7f8;
+      --card: #ffffff;
+      --text: #2d1c23;
+      --muted: #7a5a66;
+      --rose: #e85d84;
+      --rose-deep: #cf3e67;
+      --rose-soft: #ffe4ec;
+      --open: #f2b4c6;
+      --border: #f3d9e1;
+      --shadow: 0 14px 32px rgba(51, 22, 33, 0.12);
+      --focus: #cf3e67;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #fffdfd 0%, var(--bg) 42%, #ffeef3 100%);
+    }
+
+    body {
+      line-height: 1.5;
+      padding: 1rem;
+    }
+
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.25rem 0 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .landing-card {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 1.5rem;
+      text-align: center;
+      transition: opacity 380ms ease, transform 380ms ease;
+    }
+
+    .landing-card.exiting {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.985);
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0 0 0.6rem;
+      font-size: clamp(1.55rem, 3.3vw, 2.15rem);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      max-width: 52ch;
+      margin: 0 auto 1.25rem;
+      color: var(--muted);
+      font-size: clamp(0.98rem, 2.1vw, 1.08rem);
+    }
+
+    .question {
+      font-size: clamp(1.16rem, 2.6vw, 1.38rem);
+      font-weight: 700;
+      margin: 0.35rem 0 0.8rem;
+    }
+
+    .warm-line {
+      margin: 0.1rem auto 0.85rem;
+      color: #6a2d41;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+
+    .warm-line.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .choice-area {
+      position: relative;
+      width: min(520px, 100%);
+      margin: 0 auto;
+      min-height: 98px;
+    }
+
+    .choice-area.hidden {
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, opacity 180ms ease;
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(145deg, var(--rose) 0%, var(--rose-deep) 100%);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(207, 62, 103, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 24px rgba(207, 62, 103, 0.3);
+    }
+
+    .btn-secondary {
+      background: #fff2f6;
+      color: #7e3950;
+      border: 1px solid #f1c8d5;
+    }
+
+    #yesBtn,
+    #noBtn {
+      position: absolute;
+      top: 18px;
+      min-width: 132px;
+      min-height: 48px;
+      padding: 0.74rem 1.1rem;
+      will-change: left, top, transform;
+    }
+
+    #yesBtn {
+      left: calc(50% - 142px);
+      z-index: 2;
+    }
+
+    #noBtn {
+      left: calc(50% + 10px);
+      z-index: 3;
+    }
+
+    .tiny-caption {
+      min-height: 1.2rem;
+      margin: 0.4rem 0 0;
+      color: #80465a;
+      font-size: 0.92rem;
+    }
+
+    .hint {
+      min-height: 1.25rem;
+      margin: 0.15rem 0 0;
+      color: #8d4f63;
+      font-size: 0.88rem;
+    }
+
+    .press-wrap {
+      margin-top: 0.45rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 250ms ease, transform 250ms ease;
+    }
+
+    .press-wrap.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #pressBtn {
+      min-width: min(420px, 100%);
+      max-width: 100%;
+      min-height: 58px;
+      padding: 0.86rem 1.4rem;
+      font-size: clamp(1rem, 2.6vw, 1.2rem);
+    }
+
+    #reasonsSection {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: max-height 500ms ease, opacity 430ms ease, transform 430ms ease;
+      pointer-events: none;
+    }
+
+    #reasonsSection.visible {
+      max-height: 4200px;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      margin-top: 1rem;
+    }
+
+    .reasons-card {
+      padding: 1.5rem 1rem 1.2rem;
+    }
+
+    .reasons-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+    }
+
+    .reasons-header h2 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+    }
+
+    .progress {
+      margin: 0;
+      font-weight: 600;
+      color: #6a4351;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .control-btn {
+      background: #fff;
+      color: #754153;
+      border: 1px solid #ebcdd8;
+      min-height: 42px;
+      padding: 0.66rem 1rem;
+      border-radius: 14px;
+      font-weight: 600;
+    }
+
+    .control-btn:hover {
+      background: #fff8fb;
+    }
+
+    .hearts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .reason-card {
+      background: #fffafd;
+      border: 1px solid #f4dbe4;
+      border-radius: 16px;
+      padding: 0.7rem 0.55rem 0.65rem;
+      text-align: center;
+      min-height: 158px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      transition: border-color 200ms ease, background-color 200ms ease, transform 200ms ease;
+    }
+
+    .reason-card.opened {
+      background: #fff4f8;
+      border-color: #f0bccd;
+    }
+
+    .heart-btn {
+      position: relative;
+      width: 92px;
+      height: 86px;
+      background: transparent;
+      border-radius: 16px;
+      margin: 0.1rem auto 0.34rem;
+      padding: 0;
+      isolation: isolate;
+    }
+
+    .heart-shape {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 42px;
+      height: 42px;
+      background: var(--rose);
+      transform: translate(-50%, -40%) rotate(-45deg);
+      border-radius: 10px;
+      transition: background-color 220ms ease, transform 220ms ease, filter 220ms ease;
+      filter: drop-shadow(0 7px 12px rgba(195, 54, 95, 0.28));
+    }
+
+    .heart-shape::before,
+    .heart-shape::after {
+      content: "";
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .heart-shape::before {
+      top: -21px;
+      left: 0;
+    }
+
+    .heart-shape::after {
+      left: 21px;
+      top: 0;
+    }
+
+    .heart-index {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 46%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 0.97rem;
+      font-weight: 700;
+    }
+
+    .reason-card.opened .heart-shape {
+      background: var(--open);
+      transform: translate(-50%, -40%) rotate(-45deg) scale(0.95);
+      filter: none;
+    }
+
+    .reason-text {
+      margin: 0.2rem 0 0;
+      font-size: 0.92rem;
+      color: #583b47;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(4px);
+      transition: max-height 300ms ease, opacity 260ms ease, transform 260ms ease;
+    }
+
+    .reason-card.opened .reason-text {
+      max-height: 150px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .finale {
+      margin-top: 1rem;
+      background: linear-gradient(145deg, #fff4f7 0%, #ffe8f0 100%);
+      border: 1px solid #efc5d3;
+      border-radius: 18px;
+      padding: 1rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 340ms ease, transform 340ms ease;
+    }
+
+    .finale.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .finale p {
+      margin: 0.22rem 0;
+    }
+
+    .finale p:first-child {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    #particleLayer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    .particle-heart {
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #db4d79;
+      font-size: var(--size, 16px);
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      animation: floatHeart var(--dur, 850ms) ease-out forwards;
+      text-shadow: 0 2px 10px rgba(201, 74, 113, 0.22);
+    }
+
+    @keyframes floatHeart {
+      0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(0.85);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, -60px))) scale(1.12);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hearts-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 0.72rem;
+      }
+
+      .landing-card,
+      .reasons-card {
+        border-radius: 20px;
+      }
+
+      .choice-area {
+        min-height: 112px;
+      }
+
+      #yesBtn,
+      #noBtn {
+        min-width: 120px;
+        min-height: 46px;
+        font-size: 0.96rem;
+      }
+
+      #yesBtn {
+        left: calc(50% - 126px);
+      }
+
+      #noBtn {
+        left: calc(50% + 6px);
+      }
+
+      .hearts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section id="landingSection" aria-label="Valentine question">
+      <div class="card landing-card" id="landingCard">
+        <h1>Happy Valentine’s Day, Başak ❤️</h1>
+        <p class="subtitle">I built you a tiny page—because you deserve something made with love.</p>
+        <p class="question" id="questionLine">Will you be my Valentine?</p>
+        <p class="warm-line" id="warmLine" aria-live="polite">Too late. I already love you more.</p>
+
+        <div class="choice-area" id="choiceArea">
+          <button id="yesBtn" class="btn-primary" type="button" aria-label="Yes, be my Valentine">Yes 💘</button>
+          <button id="noBtn" class="btn-secondary" type="button" aria-label="No, try to escape">No 🙈</button>
+        </div>
+
+        <p class="hint" id="dodgeHint" aria-live="polite"></p>
+        <p class="tiny-caption" id="oneAnswerCaption" hidden>There is only one correct answer 😌</p>
+
+        <div class="press-wrap" id="pressWrap" hidden>
+          <button id="pressBtn" class="btn-primary" type="button" aria-label="Press if you love Metin">Press if you love Metin</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reasonsSection" aria-label="Reasons I love you">
+      <div class="card reasons-card">
+        <div class="reasons-header">
+          <h2>Reasons I Love You</h2>
+          <p class="progress" id="progressText" aria-live="polite">Opened 0 / 12 hearts</p>
+        </div>
+        <div class="controls">
+          <button id="shuffleBtn" class="control-btn" type="button" aria-label="Shuffle hearts">Shuffle hearts</button>
+          <button id="resetBtn" class="control-btn" type="button" aria-label="Back to start and reset">Back to start</button>
+        </div>
+        <div id="heartsGrid" class="hearts-grid" role="list" aria-label="12 reasons hearts"></div>
+
+        <div class="finale" id="finaleCard" hidden>
+          <p>You found them all.</p>
+          <p>No matter the distance, I choose you—every day.</p>
+          <p>Forever your Metin.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="particleLayer" aria-hidden="true"></div>
+
+  <script>
+    const reasons = [
+      "Because your music makes the world softer.",
+      "Because you make even ordinary days feel special.",
+      "Because your kindness is real—not performative.",
+      "Because you're brave when things are hard.",
+      "Because you're the calm I look for.",
+      "Because you laugh with your whole face.",
+      "Because you inspire me to be better.",
+      "Because you feel like home.",
+      "Because you care deeply—and it shows.",
+      "Because you're my favorite person to talk to.",
+      "Because life with you has a beautiful rhythm.",
+      "Because I love you. Simple as that."
+    ];
+
+    let openedHearts = new Array(12).fill(false);
+    let openedCount = 0;
+    let noDodgeCount = 0;
+    let hasAccepted = false;
+    let reasonsVisible = false;
+    let yesScale = 1;
+    let noPosition = { left: 0, top: 0 };
+    let order = Array.from({ length: reasons.length }, (_, i) => i);
+    let lastDodgeAt = 0;
+    let hintTimer = null;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+
+    const landingSection = document.getElementById("landingSection");
+    const landingCard = document.getElementById("landingCard");
+    const reasonsSection = document.getElementById("reasonsSection");
+    const questionLine = document.getElementById("questionLine");
+    const warmLine = document.getElementById("warmLine");
+    const choiceArea = document.getElementById("choiceArea");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const dodgeHint = document.getElementById("dodgeHint");
+    const oneAnswerCaption = document.getElementById("oneAnswerCaption");
+    const pressWrap = document.getElementById("pressWrap");
+    const pressBtn = document.getElementById("pressBtn");
+    const heartsGrid = document.getElementById("heartsGrid");
+    const progressText = document.getElementById("progressText");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const finaleCard = document.getElementById("finaleCard");
+    const particleLayer = document.getElementById("particleLayer");
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function rectsOverlap(a, b, pad) {
+      return !(
+        a.x + a.w + pad <= b.x ||
+        b.x + b.w + pad <= a.x ||
+        a.y + a.h + pad <= b.y ||
+        b.y + b.h + pad <= a.y
+      );
+    }
+
+    function setNoPosition(left, top) {
+      noPosition.left = left;
+      noPosition.top = top;
+      noBtn.style.left = left + "px";
+      noBtn.style.top = top + "px";
+    }
+
+    function setInitialButtonLayout() {
+      const areaRect = choiceArea.getBoundingClientRect();
+      const yesRect = yesBtn.getBoundingClientRect();
+      const noRect = noBtn.getBoundingClientRect();
+
+      const centerX = areaRect.width / 2;
+      const top = clamp(20, 10, Math.max(10, areaRect.height - noRect.height - 10));
+      const yesLeft = clamp(centerX - yesRect.width - 8, 8, areaRect.width - yesRect.width - 8);
+      const noLeft = clamp(centerX + 8, 8, areaRect.width - noRect.width - 8);
+
+      yesBtn.style.left = yesLeft + "px";
+      yesBtn.style.top = top + "px";
+      setNoPosition(noLeft, top);
+    }
+
+    function bumpYesButton() {
+      yesScale = Math.min(1 + noDodgeCount * 0.08, 1.48);
+      yesBtn.style.transform = "scale(" + yesScale.toFixed(2) + ")";
+    }
+
+    function showHint(text) {
+      dodgeHint.textContent = text;
+      if (hintTimer) {
+        clearTimeout(hintTimer);
+      }
+      hintTimer = setTimeout(() => {
+        dodgeHint.textContent = "";
+      }, 1100);
+    }
+
+    function dodgeNoButton(fromTap) {
+      if (hasAccepted) {
+        return;
+      }
+
+      const now = Date.now();
+      if (now - lastDodgeAt < 120) {
+        return;
+      }
+      lastDodgeAt = now;
+
+      const areaRect = choiceArea.getBoundingClientRect();
+      const noRectAbs = noBtn.getBoundingClientRect();
+      const yesRectAbs = yesBtn.getBoundingClientRect();
+      const margin = 8;
+      const maxLeft = Math.max(margin, areaRect.width - noRectAbs.width - margin);
+      const maxTop = Math.max(margin, areaRect.height - noRectAbs.height - margin);
+
+      const yesRect = {
+        x: yesRectAbs.left - areaRect.left,
+        y: yesRectAbs.top - areaRect.top,
+        w: yesRectAbs.width,
+        h: yesRectAbs.height
+      };
+
+      let found = null;
+      for (let i = 0; i < 60; i += 1) {
+        const left = margin + Math.random() * (maxLeft - margin);
+        const top = margin + Math.random() * (maxTop - margin);
+        const nextRect = { x: left, y: top, w: noRectAbs.width, h: noRectAbs.height };
+
+        if (rectsOverlap(nextRect, yesRect, 14)) {
+          continue;
+        }
+
+        const distance = Math.hypot(left - noPosition.left, top - noPosition.top);
+        if (distance < 20) {
+          continue;
+        }
+
+        found = { left, top };
+        break;
+      }
+
+      if (!found) {
+        found = { left: maxLeft, top: maxTop };
+      }
+
+      setNoPosition(found.left, found.top);
+      noDodgeCount += 1;
+      bumpYesButton();
+
+      if (fromTap) {
+        showHint("Nice try 😄");
+      }
+
+      if (noDodgeCount >= 6) {
+        oneAnswerCaption.hidden = false;
+      }
+    }
+
+    function createHeartBurst(x, y, count, spread) {
+      if (reduceMotion) {
+        return;
+      }
+
+      for (let i = 0; i < count; i += 1) {
+        const heart = document.createElement("span");
+        heart.className = "particle-heart";
+        heart.textContent = "❤";
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 18 + Math.random() * spread;
+        const dx = Math.cos(angle) * distance;
+        const dy = -18 - Math.abs(Math.sin(angle) * distance * 1.1);
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+        heart.style.setProperty("--dx", dx.toFixed(1) + "px");
+        heart.style.setProperty("--dy", dy.toFixed(1) + "px");
+        heart.style.setProperty("--dur", (640 + Math.random() * 430).toFixed(0) + "ms");
+        heart.style.setProperty("--size", (11 + Math.random() * 10).toFixed(0) + "px");
+        particleLayer.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 1300);
+      }
+    }
+
+    function burstFromElement(el, count, spread) {
+      const rect = el.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      createHeartBurst(x, y, count, spread);
+    }
+
+    function updateProgress() {
+      progressText.textContent = "Opened " + openedCount + " / 12 hearts";
+    }
+
+    function maybeShowFinale() {
+      if (openedCount !== reasons.length || !finaleCard.hidden) {
+        return;
+      }
+
+      finaleCard.hidden = false;
+      requestAnimationFrame(() => {
+        finaleCard.classList.add("show");
+      });
+
+      const centerX = window.innerWidth / 2;
+      const centerY = Math.min(window.innerHeight * 0.44, 360);
+      createHeartBurst(centerX, centerY, 28, 130);
+    }
+
+    function openReason(index, clickEvent) {
+      if (openedHearts[index]) {
+        return;
+      }
+
+      openedHearts[index] = true;
+      openedCount += 1;
+      updateProgress();
+
+      const card = heartsGrid.querySelector('[data-index="' + index + '"]');
+      if (card) {
+        card.classList.add("opened");
+        const trigger = card.querySelector("button");
+        if (trigger) {
+          trigger.setAttribute("aria-pressed", "true");
+        }
+      }
+
+      if (clickEvent && typeof clickEvent.clientX === "number") {
+        createHeartBurst(clickEvent.clientX, clickEvent.clientY, 8, 50);
+      } else if (card) {
+        burstFromElement(card, 8, 52);
+      }
+
+      maybeShowFinale();
+    }
+
+    function renderHearts() {
+      heartsGrid.innerHTML = "";
+
+      order.forEach((index) => {
+        const card = document.createElement("article");
+        card.className = "reason-card";
+        card.dataset.index = String(index);
+        if (openedHearts[index]) {
+          card.classList.add("opened");
+        }
+        card.setAttribute("role", "listitem");
+
+        const btn = document.createElement("button");
+        btn.className = "heart-btn";
+        btn.type = "button";
+        btn.setAttribute("aria-label", "Open reason " + (index + 1));
+        btn.setAttribute("aria-pressed", openedHearts[index] ? "true" : "false");
+
+        const shape = document.createElement("span");
+        shape.className = "heart-shape";
+        shape.setAttribute("aria-hidden", "true");
+
+        const num = document.createElement("span");
+        num.className = "heart-index";
+        num.textContent = String(index + 1);
+        num.setAttribute("aria-hidden", "true");
+
+        const reasonText = document.createElement("p");
+        reasonText.className = "reason-text";
+        reasonText.textContent = reasons[index];
+
+        btn.addEventListener("click", (event) => {
+          openReason(index, event);
+        });
+
+        btn.appendChild(shape);
+        btn.appendChild(num);
+        card.appendChild(btn);
+        card.appendChild(reasonText);
+        heartsGrid.appendChild(card);
+      });
+    }
+
+    function revealPressStep() {
+      hasAccepted = true;
+      warmLine.classList.add("show");
+      choiceArea.classList.add("hidden");
+
+      setTimeout(() => {
+        pressWrap.hidden = false;
+        requestAnimationFrame(() => {
+          pressWrap.classList.add("show");
+        });
+      }, reduceMotion ? 10 : 180);
+    }
+
+    function revealReasons() {
+      if (reasonsVisible) {
+        return;
+      }
+
+      reasonsVisible = true;
+      landingCard.classList.add("exiting");
+
+      setTimeout(() => {
+        landingSection.hidden = true;
+        reasonsSection.classList.add("visible");
+        if (!reduceMotion) {
+          reasonsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, reduceMotion ? 20 : 320);
+    }
+
+    function shuffleHearts() {
+      for (let i = order.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+      }
+      renderHearts();
+    }
+
+    function resetAll() {
+      openedHearts = new Array(12).fill(false);
+      openedCount = 0;
+      noDodgeCount = 0;
+      yesScale = 1;
+      hasAccepted = false;
+      reasonsVisible = false;
+      order = Array.from({ length: reasons.length }, (_, i) => i);
+      questionLine.textContent = "Will you be my Valentine?";
+      warmLine.classList.remove("show");
+      choiceArea.classList.remove("hidden");
+      pressWrap.hidden = true;
+      pressWrap.classList.remove("show");
+      oneAnswerCaption.hidden = true;
+      dodgeHint.textContent = "";
+      yesBtn.style.transform = "scale(1)";
+      landingSection.hidden = false;
+      landingCard.classList.remove("exiting");
+      reasonsSection.classList.remove("visible");
+      finaleCard.hidden = true;
+      finaleCard.classList.remove("show");
+      updateProgress();
+      renderHearts();
+      setTimeout(() => {
+        setInitialButtonLayout();
+      }, 20);
+
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+
+    yesBtn.addEventListener("click", () => {
+      if (hasAccepted) {
+        return;
+      }
+      burstFromElement(yesBtn, 14, 88);
+      revealPressStep();
+    });
+
+    noBtn.addEventListener("mouseenter", () => {
+      if (!isTouchDevice) {
+        dodgeNoButton(false);
+      }
+    });
+
+    choiceArea.addEventListener("mousemove", (event) => {
+      if (isTouchDevice || hasAccepted) {
+        return;
+      }
+      const rect = noBtn.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const distance = Math.hypot(event.clientX - centerX, event.clientY - centerY);
+      if (distance < 90) {
+        dodgeNoButton(false);
+      }
+    });
+
+    noBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      dodgeNoButton(isTouchDevice);
+    });
+
+    noBtn.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "mouse") {
+        event.preventDefault();
+        dodgeNoButton(true);
+      }
+    });
+
+    pressBtn.addEventListener("click", (event) => {
+      const oldLabel = pressBtn.textContent;
+      const x = typeof event.clientX === "number" ? event.clientX : pressBtn.getBoundingClientRect().left;
+      const y = typeof event.clientY === "number" ? event.clientY : pressBtn.getBoundingClientRect().top;
+      createHeartBurst(x, y, 12, 94);
+      pressBtn.textContent = "Okay okay… 😄";
+      setTimeout(() => {
+        pressBtn.textContent = oldLabel;
+      }, 1000);
+      revealReasons();
+    });
+
+    shuffleBtn.addEventListener("click", () => {
+      shuffleHearts();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      resetAll();
+    });
+
+    window.addEventListener("resize", () => {
+      if (!hasAccepted) {
+        setInitialButtonLayout();
+      }
+    });
+
+    updateProgress();
+    renderHearts();
+    setInitialButtonLayout();
+  </script>
+</body>
+</html>
