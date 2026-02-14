@@ -390,6 +390,326 @@
       font-size: 1.1rem;
     }
 
+    .one-more-btn {
+      margin-top: 0.85rem;
+      border-radius: 12px;
+      min-height: 42px;
+      padding: 0.66rem 1rem;
+      border: 1px solid #ebcdd8;
+      background: #fff8fb;
+      color: #754153;
+      font-weight: 700;
+    }
+
+    .one-more-btn:hover {
+      background: #fff2f7;
+    }
+
+    #afterHeartsSection {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: max-height 520ms ease, opacity 420ms ease, transform 420ms ease;
+      pointer-events: none;
+    }
+
+    #afterHeartsSection.visible {
+      max-height: 7000px;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      margin-top: 1rem;
+    }
+
+    .after-wrap {
+      padding: 1.2rem 1rem;
+    }
+
+    .after-heading {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+    }
+
+    .after-subtitle {
+      margin: 0 0 0.95rem;
+      color: #6d4b57;
+      font-size: 0.97rem;
+    }
+
+    .module-stack {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .module-card {
+      background: #fffafd;
+      border: 1px solid #f3dbe4;
+      border-radius: 18px;
+      padding: 0.95rem 0.85rem;
+    }
+
+    .module-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.55rem;
+      margin-bottom: 0.72rem;
+    }
+
+    .module-title {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #522f3d;
+    }
+
+    .module-progress {
+      margin: 0;
+      color: #6f4957;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .tiny-link-btn {
+      background: transparent;
+      border: 0;
+      color: #875063;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      min-height: 30px;
+      padding: 0.2rem 0.35rem;
+    }
+
+    .tiny-link-btn:hover {
+      background: #fff3f7;
+    }
+
+    .envelope-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .envelope-card {
+      background: #fff;
+      border: 1px solid #efd4dd;
+      border-radius: 14px;
+      padding: 0.58rem 0.58rem 0.66rem;
+      transition: border-color 220ms ease, background-color 220ms ease;
+    }
+
+    .envelope-card.opened {
+      border-color: #eab6c8;
+      background: #fff5f9;
+    }
+
+    .envelope-btn {
+      display: block;
+      width: 100%;
+      border-radius: 11px;
+      padding: 0.6rem 0.55rem;
+      background: #fff4f8;
+      border: 1px solid #efcddd;
+      color: #633a4a;
+      text-align: left;
+      font-weight: 700;
+      min-height: 78px;
+      transition: transform 220ms ease, background-color 220ms ease;
+    }
+
+    .envelope-btn::before {
+      content: "✉";
+      margin-right: 0.35rem;
+      color: #cf3e67;
+    }
+
+    .envelope-card.opened .envelope-btn {
+      background: #ffeaf1;
+      transform: translateY(-1px);
+    }
+
+    .envelope-message {
+      margin: 0.45rem 0 0;
+      font-size: 0.92rem;
+      color: #5b3c47;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(4px);
+      transition: max-height 280ms ease, opacity 260ms ease, transform 260ms ease;
+    }
+
+    .envelope-card.opened .envelope-message {
+      max-height: 200px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .quiz-step {
+      margin: 0 0 0.25rem;
+      color: #7a5a66;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .quiz-question {
+      margin: 0 0 0.58rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #532f3f;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .quiz-option {
+      background: #fff;
+      color: #5e3b49;
+      border: 1px solid #efcfdb;
+      border-radius: 12px;
+      min-height: 42px;
+      padding: 0.62rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .quiz-option:hover {
+      background: #fff6fa;
+    }
+
+    .quiz-feedback {
+      min-height: 1.35rem;
+      margin: 0.62rem 0 0;
+      color: #7a4f5f;
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+
+    .quiz-result {
+      margin-top: 0.7rem;
+      background: #fff4f8;
+      border: 1px solid #efbfd0;
+      border-radius: 12px;
+      padding: 0.68rem 0.72rem;
+      color: #5f3a49;
+    }
+
+    .quiz-result p {
+      margin: 0.16rem 0;
+    }
+
+    .secret-wrap {
+      display: grid;
+      gap: 0.52rem;
+      max-width: 520px;
+    }
+
+    .secret-label {
+      font-weight: 700;
+      color: #583746;
+      font-size: 0.96rem;
+    }
+
+    .secret-row {
+      display: flex;
+      gap: 0.52rem;
+      flex-wrap: wrap;
+    }
+
+    .secret-input {
+      flex: 1 1 220px;
+      min-height: 42px;
+      border-radius: 12px;
+      border: 1px solid #ebc6d4;
+      padding: 0.52rem 0.75rem;
+      background: #fff;
+      color: #422832;
+      font-size: 0.97rem;
+    }
+
+    .secret-input:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .secret-btn {
+      min-height: 42px;
+      border-radius: 12px;
+      padding: 0.6rem 0.95rem;
+      background: #fff2f7;
+      border: 1px solid #edc8d7;
+      color: #6a3d4d;
+      font-weight: 700;
+    }
+
+    .secret-btn:hover {
+      background: #ffeaf2;
+    }
+
+    .secret-hint {
+      margin: 0;
+      color: #7d5a67;
+      font-size: 0.9rem;
+    }
+
+    .secret-feedback {
+      min-height: 1.3rem;
+      margin: 0;
+      color: #804f60;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .secret-message {
+      margin-top: 0.2rem;
+      background: linear-gradient(145deg, #fff1f6 0%, #ffe7ef 100%);
+      border: 1px solid #efc0d1;
+      border-radius: 12px;
+      padding: 0.66rem 0.72rem;
+      color: #5b3443;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 260ms ease, transform 260ms ease;
+    }
+
+    .secret-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 0.95rem;
+      bottom: 0.95rem;
+      z-index: 1000;
+      border-radius: 12px;
+      border: 1px solid #eabed0;
+      background: rgba(255, 248, 252, 0.96);
+      color: #6b3d4d;
+      font-weight: 700;
+      min-height: 40px;
+      padding: 0.54rem 0.72rem;
+      box-shadow: 0 10px 24px rgba(83, 35, 51, 0.16);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 220ms ease, transform 220ms ease, background-color 200ms ease;
+    }
+
+    .back-top:hover {
+      background: rgba(255, 241, 247, 0.98);
+    }
+
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
     #particleLayer {
       position: fixed;
       inset: 0;
@@ -425,6 +745,10 @@
       .hearts-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+
+      .envelope-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 650px) {
@@ -458,6 +782,15 @@
 
       .hearts-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .envelope-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      .back-top {
+        right: 0.72rem;
+        bottom: 0.72rem;
       }
     }
 
@@ -515,12 +848,64 @@
           <p>You found them all.</p>
           <p>No matter the distance, I choose you—every day.</p>
           <p>Forever your Metin.</p>
+          <button id="oneMoreBtn" class="one-more-btn" type="button" aria-label="Reveal one more thing" hidden>One more thing… 💌</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="afterHeartsSection" aria-label="After the hearts experience">
+      <div class="card after-wrap">
+        <h3 class="after-heading">After the Hearts</h3>
+        <p class="after-subtitle">A few more little things, made for you.</p>
+
+        <div class="module-stack">
+          <article class="module-card" aria-label="Open when envelopes">
+            <div class="module-header">
+              <h4 class="module-title">Open When… Envelope Box</h4>
+              <p class="module-progress" id="envelopeProgress" aria-live="polite">Opened 0 / 6</p>
+            </div>
+            <button id="closeEnvelopesBtn" class="tiny-link-btn" type="button" aria-label="Close all envelopes">Close all</button>
+            <div id="envelopeGrid" class="envelope-grid" role="list" aria-label="Open when envelopes"></div>
+          </article>
+
+          <article class="module-card" aria-label="How well do you know us quiz">
+            <div class="module-header">
+              <h4 class="module-title">How Well Do You Know Us?</h4>
+            </div>
+            <p class="quiz-step" id="quizStepText" aria-live="polite"></p>
+            <p class="quiz-question" id="quizQuestionText"></p>
+            <div class="quiz-options" id="quizOptions"></div>
+            <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+            <div class="quiz-result" id="quizResult" hidden>
+              <p id="quizScoreText"></p>
+              <p>Perfect score or not—my favorite answer is always you.</p>
+            </div>
+          </article>
+
+          <article class="module-card" aria-label="Secret code unlock">
+            <div class="module-header">
+              <h4 class="module-title">Secret Code Unlock</h4>
+            </div>
+            <div class="secret-wrap">
+              <label class="secret-label" for="secretCodeInput">Enter the secret code</label>
+              <p class="secret-hint">Hint: the city we’re building our next chapter in.</p>
+              <div class="secret-row">
+                <input id="secretCodeInput" class="secret-input" type="text" autocomplete="off" aria-label="Secret code input">
+                <button id="secretUnlockBtn" class="secret-btn" type="button" aria-label="Unlock secret message">Unlock</button>
+              </div>
+              <p id="secretFeedback" class="secret-feedback" aria-live="polite"></p>
+              <div id="secretMessageCard" class="secret-message" hidden>
+                From anywhere in the world, my favorite place is wherever you are.
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
   <div id="particleLayer" aria-hidden="true"></div>
+  <button id="backToTopBtn" class="back-top" type="button" aria-label="Back to top">Back to top ↑</button>
 
   <script>
     const reasons = [
@@ -538,16 +923,101 @@
       "Because I love you. Simple as that."
     ];
 
+    const envelopes = [
+      {
+        title: "Open when you miss me",
+        message: "Close your eyes for 10 seconds. I’m there—in the calm between your breaths."
+      },
+      {
+        title: "Open when you feel tired",
+        message: "You don’t have to be strong all the time. Rest. I’ve got you."
+      },
+      {
+        title: "Open when you need courage",
+        message: "You’ve done hard things before. You’ll do this one too—and I’m cheering for you."
+      },
+      {
+        title: "Open when you want to smile",
+        message: "Reminder: your laugh is my favorite soundtrack (right after your cello)."
+      },
+      {
+        title: "Open on our next date",
+        message: "I’m choosing the playlist. You’re choosing dessert. Deal?"
+      },
+      {
+        title: "Open on a bad day",
+        message: "Bad days don’t get the final word. We do."
+      }
+    ];
+
+    const quizQuestions = [
+      {
+        question: "What’s our superpower?",
+        options: [
+          "Turning small moments into memories",
+          "Never getting sleepy",
+          "Always being on time"
+        ],
+        correct: 0
+      },
+      {
+        question: "What’s the best duet?",
+        options: [
+          "Coffee + silence",
+          "Your cello + my heart",
+          "Spreadsheets + chaos"
+        ],
+        correct: 1
+      },
+      {
+        question: "Pick our vibe:",
+        options: [
+          "Cozy & calm",
+          "Loud & chaotic",
+          "Serious 24/7"
+        ],
+        correct: 0
+      },
+      {
+        question: "Pick our food:",
+        options: [
+          "Eggplant and carrot",
+          "Egg and bacon",
+          "Meat and french fries (potato)"
+        ],
+        correct: 2
+      },
+      {
+        question: "If love had a soundtrack, it would be:",
+        options: [
+          "Something you play",
+          "White noise",
+          "Construction sounds"
+        ],
+        correct: 0
+      }
+    ];
+
+    const quizLetters = ["A", "B", "C"];
+    const secretCode = "DUBLIN";
+
     let openedHearts = new Array(12).fill(false);
     let openedCount = 0;
     let noDodgeCount = 0;
+    let envelopesOpened = new Array(6).fill(false);
+    let quizStep = 0;
+    let quizScore = 0;
+    let secretUnlocked = false;
     let hasAccepted = false;
     let reasonsVisible = false;
+    let afterHeartsVisible = false;
     let yesScale = 1;
     let noPosition = { left: 0, top: 0 };
     let order = Array.from({ length: reasons.length }, (_, i) => i);
     let lastDodgeAt = 0;
     let hintTimer = null;
+    let quizLocked = false;
+    let quizAdvanceTimer = null;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
@@ -569,6 +1039,22 @@
     const shuffleBtn = document.getElementById("shuffleBtn");
     const resetBtn = document.getElementById("resetBtn");
     const finaleCard = document.getElementById("finaleCard");
+    const oneMoreBtn = document.getElementById("oneMoreBtn");
+    const afterHeartsSection = document.getElementById("afterHeartsSection");
+    const envelopeGrid = document.getElementById("envelopeGrid");
+    const envelopeProgress = document.getElementById("envelopeProgress");
+    const closeEnvelopesBtn = document.getElementById("closeEnvelopesBtn");
+    const quizStepText = document.getElementById("quizStepText");
+    const quizQuestionText = document.getElementById("quizQuestionText");
+    const quizOptions = document.getElementById("quizOptions");
+    const quizFeedback = document.getElementById("quizFeedback");
+    const quizResult = document.getElementById("quizResult");
+    const quizScoreText = document.getElementById("quizScoreText");
+    const secretCodeInput = document.getElementById("secretCodeInput");
+    const secretUnlockBtn = document.getElementById("secretUnlockBtn");
+    const secretFeedback = document.getElementById("secretFeedback");
+    const secretMessageCard = document.getElementById("secretMessageCard");
+    const backToTopBtn = document.getElementById("backToTopBtn");
     const particleLayer = document.getElementById("particleLayer");
 
     function clamp(value, min, max) {
@@ -720,12 +1206,149 @@
       progressText.textContent = "Opened " + openedCount + " / 12 hearts";
     }
 
+    function updateEnvelopeProgress() {
+      const opened = envelopesOpened.filter(Boolean).length;
+      envelopeProgress.textContent = "Opened " + opened + " / 6";
+    }
+
+    function renderEnvelopes() {
+      envelopeGrid.innerHTML = "";
+
+      envelopes.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "envelope-card";
+        card.setAttribute("role", "listitem");
+        if (envelopesOpened[index]) {
+          card.classList.add("opened");
+        }
+
+        const btn = document.createElement("button");
+        btn.className = "envelope-btn";
+        btn.type = "button";
+        btn.setAttribute("aria-label", item.title);
+        btn.setAttribute("aria-expanded", envelopesOpened[index] ? "true" : "false");
+        btn.textContent = item.title;
+        btn.addEventListener("click", (event) => {
+          envelopesOpened[index] = !envelopesOpened[index];
+          renderEnvelopes();
+          updateEnvelopeProgress();
+          if (envelopesOpened[index]) {
+            createHeartBurst(event.clientX, event.clientY, 5, 40);
+          }
+        });
+
+        const message = document.createElement("p");
+        message.className = "envelope-message";
+        message.textContent = item.message;
+
+        card.appendChild(btn);
+        card.appendChild(message);
+        envelopeGrid.appendChild(card);
+      });
+    }
+
+    function renderQuizStep() {
+      if (quizAdvanceTimer) {
+        clearTimeout(quizAdvanceTimer);
+        quizAdvanceTimer = null;
+      }
+      quizOptions.innerHTML = "";
+      quizFeedback.textContent = "";
+      quizLocked = false;
+
+      if (quizStep >= quizQuestions.length) {
+        quizStepText.textContent = "Completed";
+        quizQuestionText.textContent = "That was cute.";
+        quizResult.hidden = false;
+        quizScoreText.textContent = "Score: " + quizScore + " / " + quizQuestions.length;
+        return;
+      }
+
+      quizResult.hidden = true;
+      const current = quizQuestions[quizStep];
+      quizStepText.textContent = "Question " + (quizStep + 1) + " / " + quizQuestions.length;
+      quizQuestionText.textContent = current.question;
+
+      current.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.className = "quiz-option";
+        btn.type = "button";
+        btn.setAttribute("aria-label", "Option " + quizLetters[index] + ": " + option);
+        btn.textContent = quizLetters[index] + ") " + option;
+        btn.addEventListener("click", () => {
+          if (quizLocked) {
+            return;
+          }
+          quizLocked = true;
+          const correct = index === current.correct;
+          if (correct) {
+            quizScore += 1;
+            quizFeedback.textContent = "Correct 😄";
+          } else {
+            quizFeedback.textContent = "Nice try 😄 Correct answer: " + quizLetters[current.correct];
+          }
+
+          quizAdvanceTimer = setTimeout(() => {
+            quizStep += 1;
+            renderQuizStep();
+          }, reduceMotion ? 40 : 760);
+        });
+        quizOptions.appendChild(btn);
+      });
+    }
+
+    function revealAfterHearts() {
+      if (afterHeartsVisible) {
+        return;
+      }
+      afterHeartsVisible = true;
+      afterHeartsSection.classList.add("visible");
+      if (reduceMotion) {
+        afterHeartsSection.scrollIntoView({ block: "start" });
+      } else {
+        afterHeartsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function resetSecretModule() {
+      secretUnlocked = false;
+      secretCodeInput.value = "";
+      secretFeedback.textContent = "";
+      secretMessageCard.hidden = true;
+      secretMessageCard.classList.remove("show");
+    }
+
+    function tryUnlockSecret() {
+      const guess = secretCodeInput.value.trim();
+      if (guess.toUpperCase() === secretCode) {
+        secretUnlocked = true;
+        secretFeedback.textContent = "Unlocked 💖";
+        secretMessageCard.hidden = false;
+        requestAnimationFrame(() => {
+          secretMessageCard.classList.add("show");
+        });
+        const rect = secretMessageCard.getBoundingClientRect();
+        createHeartBurst(rect.left + rect.width / 2, rect.top + 20, 14, 75);
+      } else {
+        secretFeedback.textContent = "Almost 😄 Try again.";
+      }
+    }
+
+    function updateBackToTopVisibility() {
+      if (window.scrollY > 420) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    }
+
     function maybeShowFinale() {
       if (openedCount !== reasons.length || !finaleCard.hidden) {
         return;
       }
 
       finaleCard.hidden = false;
+      oneMoreBtn.hidden = false;
       requestAnimationFrame(() => {
         finaleCard.classList.add("show");
       });
@@ -847,9 +1470,19 @@
       openedHearts = new Array(12).fill(false);
       openedCount = 0;
       noDodgeCount = 0;
+      envelopesOpened = new Array(6).fill(false);
+      quizStep = 0;
+      quizScore = 0;
+      secretUnlocked = false;
+      quizLocked = false;
+      if (quizAdvanceTimer) {
+        clearTimeout(quizAdvanceTimer);
+        quizAdvanceTimer = null;
+      }
       yesScale = 1;
       hasAccepted = false;
       reasonsVisible = false;
+      afterHeartsVisible = false;
       order = Array.from({ length: reasons.length }, (_, i) => i);
       questionLine.textContent = "Will you be my Valentine?";
       warmLine.classList.remove("show");
@@ -862,8 +1495,15 @@
       landingSection.hidden = false;
       landingCard.classList.remove("exiting");
       reasonsSection.classList.remove("visible");
+      afterHeartsSection.classList.remove("visible");
       finaleCard.hidden = true;
       finaleCard.classList.remove("show");
+      oneMoreBtn.hidden = true;
+      oneMoreBtn.blur();
+      updateEnvelopeProgress();
+      renderEnvelopes();
+      renderQuizStep();
+      resetSecretModule();
       updateProgress();
       renderHearts();
       setTimeout(() => {
@@ -924,6 +1564,32 @@
       revealReasons();
     });
 
+    oneMoreBtn.addEventListener("click", (event) => {
+      if (typeof event.clientX === "number") {
+        createHeartBurst(event.clientX, event.clientY, 10, 64);
+      } else {
+        burstFromElement(oneMoreBtn, 10, 64);
+      }
+      revealAfterHearts();
+    });
+
+    closeEnvelopesBtn.addEventListener("click", () => {
+      envelopesOpened = new Array(6).fill(false);
+      renderEnvelopes();
+      updateEnvelopeProgress();
+    });
+
+    secretUnlockBtn.addEventListener("click", () => {
+      tryUnlockSecret();
+    });
+
+    secretCodeInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        tryUnlockSecret();
+      }
+    });
+
     shuffleBtn.addEventListener("click", () => {
       shuffleHearts();
     });
@@ -938,8 +1604,21 @@
       }
     });
 
+    window.addEventListener("scroll", () => {
+      updateBackToTopVisibility();
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+
     updateProgress();
     renderHearts();
+    updateEnvelopeProgress();
+    renderEnvelopes();
+    renderQuizStep();
+    resetSecretModule();
+    updateBackToTopVisibility();
     setInitialButtonLayout();
   </script>
 </body>
